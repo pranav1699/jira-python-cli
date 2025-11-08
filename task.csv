@@ -1,0 +1,6 @@
+summary,description,issuetype,parent,assignee
+Main Task 1,Build login system,Task,,psgreat16@gmail.com
+Subtask 1.1,Design login UI,Subtask,Main Task 1,psgreat16@gmail.com
+Subtask 1.2,Write login API,Subtask,Main Task 1,pranavlearncloud@protonmail.com
+Main Task 2,Implement checkout flow,Task,,pranavlearncloud@protonmail.com
+Subtask 2.1,Add payment integration,Subtask,Main Task 2,psgreat16@gmail.com

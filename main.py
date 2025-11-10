@@ -1,5 +1,6 @@
 from datetime import datetime
 import pandas as pd
+from typing import List
 import typer
 from rich.console import Console
 from rich.table import Table
@@ -45,7 +46,7 @@ def whoami():
 def list(
     username: str = typer.Option(None, "--user", "-u", help="Filter by assignee username/email"),
     date: str = typer.Option(None, "--date", "-d", help="Filter by created date (YYYY-MM-DD)"),
-    status: list[str] = typer.Option(None, "--status", "-s", help="Filter by one or more issue statuses"),
+    status: List[str] = typer.Option(None, "--status", "-s", help="Filter by one or more issue statuses"),
     due_now: bool = typer.Option(False, "--due-now", help="Show issues due today or overdue"),
     export: bool = typer.Option(False, "--export", "-e", help="Export results")
 ):

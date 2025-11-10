@@ -104,16 +104,17 @@ def search_issues(username: str = None, date: str = None, status: list[str] = No
 
     issue_list = []
     for issue in issues:
-        issue_list.append({
-            "Key": issue.key,
-            "Summary": issue.fields.summary,
-            "Type": issue.fields.issuetype.name,
-            "Status": issue.fields.status.name,
-            "Assignee": issue.fields.assignee.displayName if issue.fields.assignee else None,
-            "Reporter": issue.fields.reporter.displayName if issue.fields.reporter else None,
-            "Due": issue.fields.duedate,
-            "URL": f"{config['url']}/browse/{issue.key}",
-        })
+    fields = issue.fields
+    issue_list.append({
+        "Key": issue.key,
+        "Summary": getattr(fields, "summary", None),
+        "Type": getattr(fields.issuetype, "name", None) if getattr(fields, "issuetype", None) else None,
+        "Status": getattr(fields.status, "name", None) if getattr(fields, "status", None) else None,
+        "Assignee": getattr(fields.assignee, "displayName", None) if getattr(fields, "assignee", None) else None,
+        "Reporter": getattr(fields.reporter, "displayName", None) if getattr(fields, "reporter", None) else None,
+        "Due": getattr(fields, "duedate", None),
+        "URL": f"{config['url']}/browse/{issue.key}",
+    })
 
     df = pd.DataFrame(issue_list)
     return df
